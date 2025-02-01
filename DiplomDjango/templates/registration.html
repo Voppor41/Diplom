@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+  {% if form.non_field_errors %}
+    <ul style="color: red;">
+      {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <h2>Регистрация</h2>
+
+    <label for="username">Введите логин:</label>
+    {{ form.username }}
+    {% for error in form.username.errors %}
+      <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+
+    <label for="password">Введите пароль:</label>
+    {{ form.password }}
+    {% for error in form.password.errors %}
+      <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+
+    <label for="confirm_password">Подтвердите пароль:</label>
+    {{ form.confirm_password }}
+    {% for error in form.confirm_password.errors %}
+      <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+
+    <label for="age">Введите свой возраст:</label>
+    {{ form.age }}
+    {% for error in form.age.errors %}
+      <p style="color: red;">{{ error }}</p>
+    {% endfor %}
+
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+</body>
+</html>
